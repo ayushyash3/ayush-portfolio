@@ -18,33 +18,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: Auto-Detect and Build
+      - name: Install and Build
         run: |
-          # Find the folder containing package.json
-          TARGET_DIR=$(find . -name "package.json" -not -path "*/node_modules/*" -exec dirname {} \;)
-          echo "Found package.json in: $TARGET_DIR"
-          cd "$TARGET_DIR"
-          npm install --legacy-peer-deps
-          npm run build
-          # Move the build folder to the root so the next step finds it
-          mv build ../../build_output 2>/dev/null || mv build ../build_output
-          
-      - name: Auto-Detect and Build
-        run: |
-          # 1. Force the missing bridge package onto the server
-          npm install @tailwindcss/postcss postcss autoprefixer --save-dev
-          
-          # 2. Overwrite the bad config file directly on the server
+          # 1. Install everything including the specific bridge Tailwind wants
+          npm install @tailwindcss/postcss postcss autoprefixer --legacy-peer-deps
+
+          # 2. DIRECT INJECTION: Create the config file the error is asking for
           echo "module.exports = { plugins: { '@tailwindcss/postcss': {}, autoprefixer: {} } }" > postcss.config.js
-          
-          # 3. Build and ignore all warnings/mismatches
-          CI=false npm run build    
+
+          # 3. Build while ignoring minor warnings
+          CI=false npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # We upload the folder we just moved to the root
-          path: ./build_output
+          path: ./build
 
   deploy:
     needs: build
