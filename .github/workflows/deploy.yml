@@ -18,13 +18,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Clean Install dependencies
-        # "npm ci" is better for servers than "npm install"
-        run: npm ci || npm install 
+      - name: Force Install Dependencies
+        # We use --include=dev to make sure react-scripts is definitely downloaded
+        run: npm install --include=dev
 
       - name: Build project
-        # This ensures the react-scripts are found
-        run: npm run build
+        # We use 'npx' to force-find the react-scripts command
+        run: npx react-scripts build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
