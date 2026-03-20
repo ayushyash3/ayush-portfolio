@@ -17,12 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clean Install dependencies
+        # "npm ci" is better for servers than "npm install"
+        run: npm ci || npm install 
 
       - name: Build project
+        # This ensures the react-scripts are found
         run: npm run build
 
       - name: Upload artifact
@@ -37,5 +38,4 @@ jobs:
       name: github-pages
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
