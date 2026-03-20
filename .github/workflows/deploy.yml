@@ -18,18 +18,22 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Build
-        # Change 'ayush-portfolio' below to match your subfolder name exactly
-        working-directory: ./ayush-portfolio 
+      - name: Auto-Detect and Build
         run: |
+          # Find the folder containing package.json
+          TARGET_DIR=$(find . -name "package.json" -not -path "*/node_modules/*" -exec dirname {} \;)
+          echo "Found package.json in: $TARGET_DIR"
+          cd "$TARGET_DIR"
           npm install --legacy-peer-deps
           npm run build
+          # Move the build folder to the root so the next step finds it
+          mv build ../../build_output 2>/dev/null || mv build ../build_output
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This must also point to the build folder inside that subfolder
-          path: ./ayush-portfolio/build
+          # We upload the folder we just moved to the root
+          path: ./build_output
 
   deploy:
     needs: build
