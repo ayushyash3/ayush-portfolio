@@ -10,32 +10,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Force Install Dependencies
-        # We use --include=dev to make sure react-scripts is definitely downloaded
-        run: npm install --include=dev
-
-      - name: Build project
-        # We use 'npx' to force-find the react-scripts command
-        run: npx react-scripts build
-
+      - run: npm install
+      - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
