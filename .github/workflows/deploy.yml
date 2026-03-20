@@ -18,21 +18,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        # We use --legacy-peer-deps to ignore version conflicts
-        run: npm install --legacy-peer-deps
-
-      - name: Check if folder exists
-        # This will tell us if react-scripts actually installed
-        run: ls -la node_modules/.bin/react-scripts
-
-      - name: Build project
-        run: npm run build
+      - name: Install and Build
+        # Change 'ayush-portfolio' below to match your subfolder name exactly
+        working-directory: ./ayush-portfolio 
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          # This must also point to the build folder inside that subfolder
+          path: ./ayush-portfolio/build
 
   deploy:
     needs: build
