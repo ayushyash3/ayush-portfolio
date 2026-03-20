@@ -19,14 +19,12 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Force Install React Scripts
-        # This is the "Magic Line" that fixes the 'not found' error
-        run: npm install react-scripts
+        # Adding --force here to overwrite any broken local locks
+        run: npm install --force
 
       - name: Build project
-        run: npm run build
+        # We are bypassing the "npm run build" shortcut and calling the file directly
+        run: ./node_modules/.bin/react-scripts build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
