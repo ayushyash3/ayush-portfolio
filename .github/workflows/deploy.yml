@@ -19,12 +19,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        # Adding --force here to overwrite any broken local locks
-        run: npm install --force
+        # We use --legacy-peer-deps to ignore version conflicts
+        run: npm install --legacy-peer-deps
+
+      - name: Check if folder exists
+        # This will tell us if react-scripts actually installed
+        run: ls -la node_modules/.bin/react-scripts
 
       - name: Build project
-        # We are bypassing the "npm run build" shortcut and calling the file directly
-        run: ./node_modules/.bin/react-scripts build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
