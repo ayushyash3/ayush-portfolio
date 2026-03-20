@@ -16,11 +16,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "TAILWIND_MODE=build react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -42,8 +40,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.2"
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1"
   }
 }
