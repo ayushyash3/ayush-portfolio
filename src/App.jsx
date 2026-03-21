@@ -4,20 +4,22 @@ import {
   ChevronDown, ChevronUp, Calendar, Building, Code, Target,
   CheckCircle2, Globe, FileText, ChevronRight,
   TrendingUp, Zap, Users, ShieldCheck, Sparkles, Brain, 
-  BarChart3, Rocket
+  BarChart3, Rocket, Linkedin, Globe2
 } from 'lucide-react';
 
 // --- DATA STRUCTURE ---
 const resumeData = {
   personal: {
     name: "Ayush Maheshwari",
-    title: "Project Manager | Scrum Master | Digital Transformation Leader",
-    subtitles: ["Cards & Payments", "AI-Driven Delivery", "Agile Scaling"],
+    title: "Payments Product & Delivery Leader | Cards Domain Expert",
+    subtitles: ["TSYS Prime 4 Specialist", "FinTech Transformation", "Agile Scaling"],
     location: "Kitchener, Ontario, Canada",
     phone: "+1 519-721-1423",
     email: "ayushyash3@gmail.com",
     skype: "ayush.maheshwari1",
-    summary: "Project Manager & Scrum Master with 18+ years of global experience driving digital transformation and scaling complex platforms across Cards & Payments, Digital Banking, and Retail. Beyond traditional delivery, I focus on integrating AI-driven insights into project lifecycles—optimizing resource allocation and predicting risks before they impact the bottom line. Proven track record of maximizing business value by orchestrating Agile delivery and enterprise-grade system migrations (TSYS Prime) for top-tier banks in North America and globally."
+    linkedin: "linkedin.com/in/ayush-maheshwari-20632615/",
+    portfolio: "https://ayushyash3.github.io/ayush-portfolio/",
+    summary: "FinTech Product & Delivery Leader and Payments Domain Expert with nearly two decades of experience delivering scalable, high-impact platforms across Cards & Payments and Digital Banking. Passionate about driving quality, digital innovation, and next-generation (AI-enabled) financial solutions across global markets. Proven track record leading Agile delivery, multi-vendor coordination, and complex system migrations for top-tier banks in Canada, USA, India, and UAE."
   },
   impact: [
     { title: "Accelerated Time-to-Market", desc: "Streamlined Agile & CI/CD workflows to deliver critical digital banking features faster and more reliably.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50" },
@@ -48,20 +50,20 @@ const resumeData = {
     }
   ],
   competencies: [
-    "Agile Delivery (Scrum, SAFe), PI/Sprint Planning",
-    "Project & Program Management",
-    "AI/ML Integration in Banking Workflows",
-    "Cards & Payments (TSYS Prime, Card Issuing, Migration)",
-    "Digital Banking (Mobile/Web, Chatbot, Online Banking)",
-    "QA/Test Management (SIT, UAT, Regression, API Testing)",
-    "Stakeholder & Vendor Management",
-    "Requirements Analysis & Acceptance Criteria",
-    "Middleware/API Testing (SOAP UI, Postman)",
-    "Risk Management & Project Reporting"
+    "Strategic Portfolio & Delivery Management",
+    "Payments & Cards Domain (TSYS Prime)",
+    "Digital Banking Platforms",
+    "Quality Engineering & Test Governance",
+    "API & Middleware Integration",
+    "Agile Delivery (Scrum, SAFe, PI Planning)",
+    "Compliance & Risk Management",
+    "Stakeholder & Client Leadership",
+    "Requirements & Acceptance Criteria",
+    "Process Optimization & Transformation"
   ],
   techSkills: {
+    "Payments & Cards": "TSYS Prime 4, Card Issuing, Authorizations, Clearing & Settlement, Disputes & Chargebacks",
     "Tools": "JIRA, HPQC, Zephyr, SOAP UI, Postman, Selenium WebDriver",
-    "Testing/Debugging": "Putty, WinSCP",
     "Platforms": "Windows OS, IBM Sterling OMS, Sterling Integrator",
     "Domains": "Cards & Payments, Digital Banking, Retail, Gaming, Navigation"
   },
@@ -70,18 +72,18 @@ const resumeData = {
       company: "Tata Consultancy Services (TCS)",
       title: "Project Manager (Associate Consultant)",
       duration: "Dec 2022 - Present",
-      location: "Bangalore / Canada",
+      location: "Canada / India",
       projects: [
         {
-          name: "SalesLogix – USA Largest Bank",
+          name: "SalesLogix – Bank of America (USA)",
           role: "Project Manager / Scrum Master",
-          details: "A strategic digital transformation initiative designed to unify customer and sales data, enabling the bank to scale its CRM capabilities and improve client acquisition rates.",
+          details: "A strategic digital transformation initiative designed to unify customer and Loan data, enabling the bank to scale its CRM capabilities and improve client acquisition rates.",
           points: [
-            "Spearheaded the end-to-end Agile delivery of a scalable CRM platform, directly contributing to enhanced customer engagement and operational efficiency.",
-            "Scaled Agile practices across distributed teams, optimizing delivery workflows and significantly reducing time-to-market for critical sales features.",
-            "Partnered with executive stakeholders to translate business scalability goals into clear, actionable technical roadmaps.",
-            "Drove multi-team coordination to ensure high-quality, zero-defect releases that improved system reliability and user adoption.",
-            "Proactively managed risks and removed blockers, ensuring continuous value delivery aligned with market demands."
+            "Spearheaded end-to-end Agile delivery of a customer-focused initiative, improving Lead information management across the organization.",
+            "Facilitated team meetings, planning sessions, and regular check-ins to ensure smooth collaboration and progress.",
+            "Improved team efficiency and delivery timelines by driving continuous improvements and better ways of working.",
+            "Coordinated testing and ensured all deliverables were reviewed and ready before release.",
+            "Proactively identified risks and resolved issues to keep the project on track."
           ]
         }
       ]
@@ -90,18 +92,18 @@ const resumeData = {
       company: "Accenture Technologies",
       title: "Associate Project Manager",
       duration: "June 2021 - Dec 2022",
-      location: "Bangalore",
+      location: "India",
       projects: [
         {
-          name: "Credit Sync – USA Largest Bank",
+          name: "Credit Sync – Bank of America (USA)",
           role: "Application Development Manager – Associate",
-          details: "Large-scale enterprise initiative aimed at modernizing the flow of credit data, enabling real-time synchronization across banking channels to support millions of active users.",
+          details: "Large-scale initiative aimed at improving the accuracy and flow of credit data across multiple banking channels.",
           points: [
-            "Orchestrated cross-functional Scrum teams to deliver a highly scalable data synchronization solution, eliminating legacy data bottlenecks.",
-            "Enhanced the digital banking customer experience (CX) by ensuring real-time, accurate credit data availability across web and mobile platforms.",
-            "Managed complex multi-vendor alignment and resource scaling, adapting team size dynamically based on strategic project demands.",
-            "Enforced strict QA/SIT governance, mitigating financial risks and ensuring seamless backend integrations.",
-            "Fostered a culture of continuous delivery, improving overall team velocity and release predictability."
+            "Delivered Agile ceremonies and ensured smooth Scrum operations for real-time credit data updates.",
+            "Managed multi-stakeholder alignment, client requirement gathering, and resource onboarding for web/mobile/backend systems.",
+            "Conducted QA reviews and validated test coverage for SIT/UAT cycles, ensuring high-quality releases.",
+            "Prepared epics and stories based on complex business requirements to streamline project implementation.",
+            "Estimated efforts and assessed team ramp-up/down based on evolving project requirements."
           ]
         }
       ]
@@ -110,36 +112,39 @@ const resumeData = {
       company: "Attra Infotech PVT Ltd",
       title: "Project Manager / Test Lead",
       duration: "June 2018 - May 2021",
-      location: "Bangalore",
+      location: "Bangalore, India",
       projects: [
         {
-          name: "Dunia Finance",
-          role: "Project Coordinator/Manager",
-          details: "Launch of a modern credit card mobile application designed to scale digital self-service capabilities and reduce call center dependency.",
+          name: "Credit Card Mobile App - Dunia Finance, UAE",
+          role: "Project Coordinator / Manager",
+          details: "Managed the lifecycle of a mobile application for credit card services, enabling real-time management for UAE customers.",
           points: [
-            "Led the successful launch of the mobile banking app, driving a significant increase in digital customer onboarding and engagement.",
-            "Bridged the gap between mobile front-end, backend APIs, and business units to deliver a seamless omnichannel experience.",
-            "Implemented proactive risk management strategies that prevented delays and ensured rapid feature rollout."
+            "Delivered end-to-end delivery for a mobile credit card platform, ensuring seamless customer experience and timely release.",
+            "Directed cross-functional teams, coordinated QA/testing, and ensured integration with backend banking systems.",
+            "Implemented continuous improvement initiatives, increasing delivery efficiency by ~20%.",
+            "Introduced automation and workflow optimization, reducing manual testing effort and accelerating release cycles.",
+            "Liaised with stakeholders and vendors, ensuring requirements were met and risks mitigated."
           ]
         },
         {
-          name: "Digital Banking Initiative",
-          role: "Test Manager/Test Lead",
-          details: "Strategic rollout of a secure digital banking platform enabling scaled customer acquisition and transaction management.",
+          name: "Digital Banking Platform – SBI Bank, India",
+          role: "Project Coordinator / Manager",
+          details: "Managed the lifecycle of a mobile application for credit card services, enabling real-time management for India customers.",
           points: [
-            "Engineered the SIT testing strategy, ensuring the platform could scale securely to handle high volumes of digital credit card applications.",
-            "Partnered closely with IT and business leaders to align quality assurance metrics directly with business value and UX goals.",
-            "Streamlined vendor testing processes, resulting in faster approval cycles and a robust go-live."
+            "Defined testing strategy, resource planning, and delivery timelines for web and mobile credit card applications.",
+            "Acted as primary point of contact for stakeholders, ensuring alignment and zero-defect go-live.",
+            "Streamlined release and change management processes, improving operational efficiency.",
+            "Coordinated requirements gathering and acceptance criteria definition, translating complex business rules into actionable tasks."
           ]
         },
         {
           name: "Cards Issuing System Migration (Mashreq Bank)",
-          role: "Project Coordinator/Test Lead",
-          details: "High-stakes core system modernization, migrating the bank’s legacy credit card portfolio to the robust TSYS processing platform.",
+          role: "Project Coordinator / Test Lead",
+          details: "Transitioned credit card platform to the TSYS processing system, focusing on secure data migration and service reliability.",
           points: [
-            "Orchestrated the seamless migration of critical financial data, unlocking new scalability for loyalty, pricing, and payment gateway modules.",
-            "Delivered comprehensive change management and risk mitigation, ensuring zero business disruption during the transition.",
-            "Provided deep impact analysis to development teams, expanding test coverage and safeguarding financial integrity."
+            "Program Management for a major Cards System Transformation, including Business Case preparation and solution shortlisting.",
+            "Managed functional modules: Loyalty products, Collections, Payment Gateway, and Customer Onboarding.",
+            "Documented testing strategy for UAT and conducted walkthrough sessions for sign-offs."
           ]
         }
       ]
@@ -151,13 +156,13 @@ const resumeData = {
       location: "Hyderabad / UAE",
       projects: [
         {
-          name: "Cards System Upgrade (Prime 4 – ADIB Bank)",
+          name: "Cards System Upgrade (Prime 3 to Prime 4 – ADIB)",
           role: "QA - Technical Lead",
-          details: "Enterprise upgrade of the credit card platform from Prime 3 to Prime 4 to future-proof the system for exponential transaction growth.",
+          details: "Migrated the credit card platform to Prime 4 to enhance performance and scalability.",
           points: [
-            "Spearheaded platform modernization testing, proving the new system's capability to handle increased loads with enhanced reliability.",
-            "Instituted standardized STLC quality practices that reduced testing overhead and accelerated the upgrade timeline.",
-            "Guaranteed the technical execution aligned perfectly with the bank’s strategic goal of scaling their card issuing business."
+            "Implemented STLC standard quality practices/processes in projects.",
+            "Assisted team in conducting end-to-end testing ensuring business, technical, and functional requirements were met.",
+            "Managed and guided offshore teams based on project stakeholder discussions."
           ]
         }
       ]
@@ -169,13 +174,13 @@ const resumeData = {
       location: "Noida",
       projects: [
         {
-          name: "Online Game & Mobile App Testing",
+          name: "Online Game & Mobile App Testing (PCH - Publishers Clearing House)",
           role: "Test Lead",
-          details: "Publishers Clearing House company applications.",
+          details: "Quality assurance for Publishers Clearing House applications.",
           points: [
-            "Drove on-time delivery of mobile and web applications, supporting high-traffic user events and marketing campaigns.",
-            "Implemented rigorous traceability processes to align rapidly changing product features with business scope.",
-            "Optimized release analysis and test execution to support rapid application scaling."
+            "Responsible for client interaction and guiding teams for on-time delivery of Functional/Regression testing.",
+            "Participated in Sprint planning and requirement gathering to discuss business development needs.",
+            "Managed traceability matrices to keep project in scope and monitored progress weekly."
           ]
         }
       ]
@@ -187,13 +192,13 @@ const resumeData = {
       location: "Noida",
       projects: [
         {
-          name: "PRIME 4.0 Testing",
+          name: "PRIME 4.0 Core Product Testing",
           role: "Sr. Test Analyst",
-          details: "Comprehensive solution testing ranging from card issuing, merchant acquiring, to ATM management and fraud/risk management.",
+          details: "Verified processor-in-box solutions for card issuing, acquiring, and fraud management.",
           points: [
-            "Validated critical infrastructure updates for Card/Merchant creation via API and XML, enabling faster merchant onboarding.",
-            "Secured revenue streams by exhaustively testing complex Credit Shield and rewards functionality on Prime 4.",
-            "Streamlined inter-bank communications by validating generation of Incoming and Outgoing Issuer/Acquiring files."
+            "Handled card and merchant creation via web app, XML, and APIs as per payment system specs (VISA, MC, AMEX).",
+            "Exclusive knowledge of Credit shield and rewards functionality on Prime 4.",
+            "Defect reporting and analysis for team members, ensuring product customization met requirements."
           ]
         }
       ]
@@ -205,12 +210,13 @@ const resumeData = {
       location: "Noida",
       projects: [
         {
-          name: "Online Web Store and Feeds Testing (Ebay)",
+          name: "eBay Webstore Platform (GSI Commerce)",
           role: "Test Engineer",
-          details: "Comprehensive platform for GSI customers to launch and sell products.",
+          details: "GSI Webstore Testing for global product launches and demand forecasting.",
           points: [
-            "Responsible for Functional and Regression testing based on requirements.",
-            "Created Test Cases according to Business Requirements covering all possible scenarios."
+            "Delivered functional and regression testing for large-scale e-commerce web platforms.",
+            "Developed test cases covering end-to-end customer journeys and product management.",
+            "Coordinated with global development teams to improve delivery quality."
           ]
         }
       ]
@@ -222,12 +228,13 @@ const resumeData = {
       location: "Noida",
       projects: [
         {
-          name: "TomTom Navigation System",
+          name: "TomTom Navigation Project",
           role: "Digital Cartographer",
-          details: "Managed large-scale databases supporting GIS, Location-Based Services, and in-car navigation solutions worldwide.",
+          details: "GIS database management for worldwide in-car navigation solutions.",
           points: [
-            "Maintained mission-critical geographic databases, scaling data accuracy to support global navigation solutions.",
-            "Ensured comprehensive test coverage, preventing mapping defects in consumer-facing GPS products."
+            "Conducted QA for large-scale GIS databases, ensuring accurate navigation data.",
+            "Managed defect reporting and implementation review for system reliability.",
+            "Coordinated with onsite/offshore teams facilitating daily updates."
           ]
         }
       ]
@@ -345,15 +352,33 @@ export default function App() {
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-x-1/3 translate-y-1/3"></div>
 
         <div className="max-w-5xl mx-auto px-6 py-16 relative z-10">
-          <div className="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-            <div>
+          <div className="flex flex-col md:flex-row gap-10 items-center">
+            {/* PHOTO SECTION */}
+            <div className="relative shrink-0">
+                <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-8 ring-blue-50">
+                    <img 
+                        src="IMG_3356.jpg" 
+                        alt="Ayush Maheshwari" 
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                            e.target.onerror = null; 
+                            e.target.src = "https://via.placeholder.com/400x400?text=Ayush+Maheshwari";
+                        }}
+                    />
+                </div>
+                <div className="absolute -bottom-3 -right-3 bg-blue-600 text-white p-3 rounded-2xl shadow-lg border-2 border-white">
+                    <Briefcase size={20} />
+                </div>
+            </div>
+
+            <div className="flex-1 text-center md:text-left">
               <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-2">
                 {resumeData.personal.name}
               </h1>
-              <h2 className="text-xl md:text-2xl font-medium text-blue-700 mb-4 flex items-center gap-2">
+              <h2 className="text-xl md:text-2xl font-medium text-blue-700 mb-4 flex items-center justify-center md:justify-start gap-2">
                 {resumeData.personal.title} <Sparkles size={20} className="text-amber-500" />
               </h2>
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
                 {resumeData.personal.subtitles.map((sub, i) => (
                   <span key={i} className="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full border border-slate-200">
                     {sub}
@@ -363,20 +388,20 @@ export default function App() {
               <p className="text-slate-600 max-w-2xl leading-relaxed text-lg">
                 {resumeData.personal.summary}
               </p>
-            </div>
-
-            <div className="bg-white p-5 rounded-2xl shadow-lg border border-slate-100 w-full md:w-auto shrink-0 space-y-4 relative z-20">
-              <a href={`mailto:${resumeData.personal.email}`} className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors group">
-                <div className="p-2 bg-slate-50 group-hover:bg-blue-50 rounded-lg transition-colors"><Mail size={18} /></div>
-                <span className="font-medium text-sm">{resumeData.personal.email}</span>
-              </a>
-              <a href={`tel:${resumeData.personal.phone}`} className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors group">
-                <div className="p-2 bg-slate-50 group-hover:bg-blue-50 rounded-lg transition-colors"><Phone size={18} /></div>
-                <span className="font-medium text-sm">{resumeData.personal.phone}</span>
-              </a>
-              <div className="flex items-center gap-3 text-slate-600 group">
-                <div className="p-2 bg-slate-50 rounded-lg"><MapPin size={18} /></div>
-                <span className="font-medium text-sm">{resumeData.personal.location}</span>
+              
+              <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-6 text-sm">
+                <a href={`mailto:${resumeData.personal.email}`} className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors">
+                  <Mail size={16} /> {resumeData.personal.email}
+                </a>
+                <a href={`tel:${resumeData.personal.phone}`} className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors">
+                  <Phone size={16} /> {resumeData.personal.phone}
+                </a>
+                <div className="flex items-center gap-2 text-slate-600">
+                  <MapPin size={16} /> {resumeData.personal.location}
+                </div>
+                <a href={`https://${resumeData.personal.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors">
+                  <Linkedin size={16} /> LinkedIn
+                </a>
               </div>
             </div>
           </div>
@@ -523,6 +548,9 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-4">
             <a href={`mailto:${resumeData.personal.email}`} className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center gap-2 shadow-lg shadow-blue-900/20">
               <Mail size={18}/> Contact Me
+            </a>
+            <a href={resumeData.personal.portfolio} className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-medium transition-colors inline-flex items-center gap-2">
+              <Globe2 size={18}/> Digital Portfolio
             </a>
           </div>
           <div className="mt-12 text-sm border-t border-slate-800 pt-6">
