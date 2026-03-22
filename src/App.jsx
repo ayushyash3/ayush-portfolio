@@ -4,7 +4,7 @@ import {
   ChevronDown, ChevronUp, Calendar, Building, Code, Target,
   CheckCircle2, Globe, FileText, ChevronRight,
   TrendingUp, Zap, Users, ShieldCheck, Sparkles, Brain, 
-  BarChart3, Rocket, Linkedin, Globe2
+  BarChart3, Rocket, Linkedin, Globe2, Printer, Download
 } from 'lucide-react';
 
 // --- DATA STRUCTURE ---
@@ -343,9 +343,33 @@ const ExperienceCard = ({ exp }) => {
 
 // --- MAIN APP ---
 export default function App() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-blue-200 selection:text-blue-900">
       
+      {/* Floating Action Buttons - Print/Download */}
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-3 print:hidden">
+        <div className="max-w-5xl mx-auto flex justify-end gap-3">
+          <button 
+            onClick={handlePrint}
+            className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all font-semibold border border-slate-200"
+          >
+            <Printer size={18} />
+            <span>Print</span>
+          </button>
+          <button 
+            onClick={handlePrint}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-semibold shadow-lg shadow-blue-200"
+          >
+            <Download size={18} />
+            <span>Download PDF</span>
+          </button>
+        </div>
+      </div>
+
       {/* HEADER / HERO SECTION */}
       <header className="bg-white border-b border-slate-200 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-1/3 -translate-y-1/3"></div>
@@ -488,7 +512,7 @@ export default function App() {
         </section>
 
         {/* EXPERIENCE SECTION */}
-        <section>
+        <section className="print:block">
           <SectionHeading title="Professional Experience" icon={Briefcase} />
           <div className="relative pt-4">
             {resumeData.experience.map((exp, idx) => (
@@ -497,7 +521,7 @@ export default function App() {
           </div>
         </section>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 print:block print:space-y-12">
           <section>
             <SectionHeading title="Certifications & Awards" icon={Award} />
             <div className="space-y-4">
@@ -541,7 +565,7 @@ export default function App() {
 
       </main>
 
-      <footer className="bg-slate-900 text-slate-400 py-12 text-center mt-12">
+      <footer className="bg-slate-900 text-slate-400 py-12 text-center mt-12 print:hidden">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-white text-2xl font-bold mb-4">Let's build the future of banking</h2>
           <p className="mb-8 max-w-lg mx-auto">Ready to help your organization scale with intelligent delivery and robust digital transformation strategies.</p>
@@ -558,6 +582,21 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* CSS for print optimization */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media print {
+          .print\\:hidden { display: none !important; }
+          body { background-color: white !important; -webkit-print-color-adjust: exact; }
+          main { padding-top: 0 !important; }
+          .max-w-5xl { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
+          section { page-break-inside: avoid; margin-bottom: 2rem !important; }
+          header { border-bottom: none !important; padding-top: 0 !important; }
+          .bg-slate-50 { background-color: white !important; }
+          .shadow-sm, .shadow-md, .shadow-lg, .shadow-2xl { shadow: none !important; box-shadow: none !important; }
+          @page { size: auto; margin: 15mm 15mm 15mm 15mm; }
+        }
+      `}} />
     </div>
   );
 }
