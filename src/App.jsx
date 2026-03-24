@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { 
-  Mail, Phone, MapPin, Briefcase, GraduationCap, Award, 
+import React, { useState, useRef } from 'react';
+import html2pdf from 'html2pdf.js';
+import {
+  Mail, Phone, MapPin, Briefcase, GraduationCap, Award,
   ChevronDown, ChevronUp, Calendar, Building, Code, Target,
   CheckCircle2, Globe, FileText, ChevronRight,
-  TrendingUp, Zap, Users, ShieldCheck, Sparkles, Brain, 
+  TrendingUp, Zap, Users, ShieldCheck, Sparkles, Brain,
   BarChart3, Rocket, Linkedin, Globe2, Printer, Download
 } from 'lucide-react';
 
@@ -268,15 +269,18 @@ const SectionHeading = ({ title, icon: Icon, subtitle }) => (
   </div>
 );
 
-const ExperienceCard = ({ exp }) => {
+const ExperienceCard = ({ exp, expandAll }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Use expandAll prop to override local expansion state
+  const shouldExpand = expandAll || isExpanded;
 
   return (
     <div className="relative pl-8 md:pl-0">
       <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-px bg-blue-200 -translate-x-1/2"></div>
       <div className="md:hidden absolute left-3 top-2 bottom-0 w-px bg-blue-200"></div>
 
-      <div className={`md:flex items-center justify-between w-full ${isExpanded ? 'mb-4' : 'mb-8'}`}>
+      <div className={`md:flex items-center justify-between w-full ${shouldExpand ? 'mb-4' : 'mb-8'}`}>
         <div className="hidden md:block w-5/12 text-right pr-8">
           <div className="text-lg font-bold text-blue-700">{exp.company}</div>
           <div className="text-slate-500 flex items-center justify-end gap-1 mt-1 text-sm">
@@ -290,28 +294,28 @@ const ExperienceCard = ({ exp }) => {
         <div className="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-white border-4 border-blue-500 shadow transform md:-translate-x-1/2 mt-1 md:mt-0 z-10"></div>
 
         <div className="md:w-5/12 md:pl-8 w-full">
-          <div 
-            className={`bg-white rounded-xl shadow-sm border border-slate-100 p-5 cursor-pointer hover:shadow-md transition-shadow ${isExpanded ? 'ring-2 ring-blue-100' : ''}`}
+          <div
+            className={`bg-white rounded-xl shadow-sm border border-slate-100 p-5 cursor-pointer hover:shadow-md transition-shadow ${shouldExpand ? 'ring-2 ring-blue-100' : ''}`}
             onClick={() => setIsExpanded(!isExpanded)}
           >
             <div className="md:hidden mb-2">
               <div className="text-lg font-bold text-blue-700">{exp.company}</div>
               <div className="text-slate-500 text-sm">{exp.duration} | {exp.location}</div>
             </div>
-            
+
             <h3 className="text-xl font-bold text-slate-800">{exp.title}</h3>
             <div className="text-slate-600 mt-1 text-sm">
               {exp.projects.length} {exp.projects.length > 1 ? 'Projects/Roles' : 'Project/Role'} included
             </div>
-            
+
             <div className="flex items-center gap-1 text-blue-600 font-medium text-sm mt-3">
-              {isExpanded ? <><ChevronUp size={16}/> Hide details</> : <><ChevronDown size={16}/> View details</>}
+              {shouldExpand ? <><ChevronUp size={16}/> Hide details</> : <><ChevronDown size={16}/> View details</>}
             </div>
           </div>
         </div>
       </div>
 
-      {isExpanded && (
+      {shouldExpand && (
         <div className="md:w-5/12 md:ml-auto md:pl-8 w-full mb-10 pl-0 mt-2">
           <div className="bg-slate-50 rounded-xl p-5 border border-slate-100 space-y-6">
             {exp.projects.map((proj, idx) => (
@@ -343,25 +347,48 @@ const ExperienceCard = ({ exp }) => {
 
 // --- MAIN APP ---
 export default function App() {
+  const [expandAllSections, setExpandAllSections] = useState(false);
+  const contentRef = useRef();
+
   const handlePrint = () => {
-    window.print();
+    setExpandAllSections(true);
+    setTimeout(() => {
+      window.print();
+      setExpandAllSections(false);
+    }, 500);
+  };
+
+  const handleDownload = () => {
+    setExpandAllSections(true);
+    setTimeout(() => {
+      const element = contentRef.current;
+      const opt = {
+        margin: 15,
+        filename: 'Ayush_Maheshwari_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      };
+      html2pdf().set(opt).from(element).save();
+      setExpandAllSections(false);
+    }, 500);
   };
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 selection:bg-blue-200 selection:text-blue-900">
-      
+
       {/* Floating Action Buttons - Print/Download */}
       <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-3 print:hidden">
         <div className="max-w-5xl mx-auto flex justify-end gap-3">
-          <button 
+          <button
             onClick={handlePrint}
             className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all font-semibold border border-slate-200"
           >
             <Printer size={18} />
             <span>Print</span>
           </button>
-          <button 
-            onClick={handlePrint}
+          <button
+            onClick={handleDownload}
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-semibold shadow-lg shadow-blue-200"
           >
             <Download size={18} />
@@ -369,6 +396,8 @@ export default function App() {
           </button>
         </div>
       </div>
+
+      <div ref={contentRef}>
 
       {/* HEADER / HERO SECTION */}
       <header className="bg-white border-b border-slate-200 relative overflow-hidden">
@@ -516,7 +545,7 @@ export default function App() {
           <SectionHeading title="Professional Experience" icon={Briefcase} />
           <div className="relative pt-4">
             {resumeData.experience.map((exp, idx) => (
-              <ExperienceCard key={idx} exp={exp} />
+              <ExperienceCard key={idx} exp={exp} expandAll={expandAllSections} />
             ))}
           </div>
         </section>
@@ -563,7 +592,7 @@ export default function App() {
           </section>
         </div>
 
-      </main>
+      </div>
 
       <footer className="bg-slate-900 text-slate-400 py-12 text-center mt-12 print:hidden">
         <div className="max-w-5xl mx-auto px-6">
