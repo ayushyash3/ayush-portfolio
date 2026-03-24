@@ -366,11 +366,10 @@ export default function App() {
 
       // Ensure all content is visible for PDF
       element.style.backgroundColor = 'white';
-      element.style.padding = '0px';
-      element.style.width = '100%';
+      element.style.padding = '10px';
 
       const opt = {
-        margin: [8, 8, 8, 8],
+        margin: [5, 5, 5, 5],
         filename: 'Ayush_Maheshwari_Resume.pdf',
         image: { type: 'png', quality: 1 },
         html2canvas: {
@@ -379,14 +378,14 @@ export default function App() {
           useCORS: true,
           allowTaint: true,
           backgroundColor: '#ffffff',
-          windowHeight: element.scrollHeight,
-          windowWidth: element.scrollWidth
+          letterRendering: true
         },
         jsPDF: {
           orientation: 'portrait',
           unit: 'mm',
           format: 'a4',
-          compress: false
+          compress: false,
+          precision: 10
         }
       };
 
@@ -398,10 +397,9 @@ export default function App() {
           // Remove inline styles
           element.style.backgroundColor = '';
           element.style.padding = '';
-          element.style.width = '';
         })
         .save();
-    }, 1500);
+    }, 1800);
   };
 
   return (
@@ -434,7 +432,7 @@ export default function App() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-1/3 -translate-y-1/3"></div>
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-x-1/3 translate-y-1/3"></div>
 
-        <div className="max-w-5xl mx-auto px-6 py-10 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 py-6 relative z-10">
           <div className="flex flex-col md:flex-row gap-10 items-center">
             {/* PHOTO SECTION */}
             <div className="relative shrink-0">
@@ -492,7 +490,7 @@ export default function App() {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="max-w-5xl mx-auto px-6 py-8 space-y-12">
+      <main className="max-w-5xl mx-auto px-6 py-4 space-y-10">
         
         {/* FUTURE VALUE SECTION */}
         <section>
@@ -649,25 +647,22 @@ export default function App() {
         @media print {
           .print\\:hidden { display: none !important; }
           body { background-color: white !important; -webkit-print-color-adjust: exact; }
-          main { padding-top: 0 !important; }
+          main { padding-top: 0 !important; padding-bottom: 0 !important; }
           .max-w-5xl { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-          section { page-break-inside: avoid; margin-bottom: 1rem !important; }
-          header { border-bottom: none !important; padding-top: 0 !important; }
+          section { margin-bottom: 1rem !important; }
+          header { border-bottom: none !important; padding-top: 0 !important; padding-bottom: 1rem !important; }
           .bg-slate-50 { background-color: white !important; }
-          .shadow-sm, .shadow-md, .shadow-lg, .shadow-2xl { shadow: none !important; box-shadow: none !important; }
-          @page { size: auto; margin: 15mm 15mm 15mm 15mm; }
+          .shadow-sm, .shadow-md, .shadow-lg, .shadow-2xl { box-shadow: none !important; }
+          @page { size: auto; margin: 10mm 10mm 10mm 10mm; }
         }
 
         /* Styles for PDF output */
-        section { margin-bottom: 1.2rem !important; }
+        section { margin-bottom: 0.8rem !important; }
         .bg-gradient-to-br { -webkit-print-color-adjust: exact !important; }
-        p { margin-bottom: 0.8rem !important; }
-        ul, ol { margin-bottom: 0.8rem !important; }
-        li { margin-bottom: 0.4rem !important; }
-
-        /* Ensure expanded sections are not clipped */
-        div[class*="relative"] { overflow: visible !important; }
-        div { page-break-inside: avoid; }
+        p { margin-bottom: 0.5rem !important; line-height: 1.4; }
+        ul, ol { margin-bottom: 0.5rem !important; margin-left: 1.5rem !important; }
+        li { margin-bottom: 0.2rem !important; line-height: 1.3; }
+        h1, h2, h3, h4, h5, h6 { margin-bottom: 0.3rem !important; }
       `}} />
     </div>
   );
