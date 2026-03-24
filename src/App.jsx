@@ -362,16 +362,40 @@ export default function App() {
     setExpandAllSections(true);
     setTimeout(() => {
       const element = contentRef.current;
+
+      // Add temporary inline styles for better PDF output
+      element.style.backgroundColor = 'white';
+      element.style.padding = '20px';
+
       const opt = {
-        margin: 15,
+        margin: [10, 10, 10, 10],
         filename: 'Ayush_Maheshwari_Resume.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+        html2canvas: {
+          scale: 3,
+          logging: false,
+          useCORS: true,
+          allowTaint: true
+        },
+        jsPDF: {
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4',
+          compress: true
+        }
       };
-      html2pdf().set(opt).from(element).save();
-      setExpandAllSections(false);
-    }, 500);
+
+      html2pdf()
+        .set(opt)
+        .from(element)
+        .then(() => {
+          setExpandAllSections(false);
+          // Remove inline styles
+          element.style.backgroundColor = '';
+          element.style.padding = '';
+        })
+        .save();
+    }, 1000);
   };
 
   return (
@@ -404,7 +428,7 @@ export default function App() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-1/3 -translate-y-1/3"></div>
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-x-1/3 translate-y-1/3"></div>
 
-        <div className="max-w-5xl mx-auto px-6 py-16 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 py-10 relative z-10">
           <div className="flex flex-col md:flex-row gap-10 items-center">
             {/* PHOTO SECTION */}
             <div className="relative shrink-0">
@@ -462,7 +486,7 @@ export default function App() {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="max-w-5xl mx-auto px-6 py-12 space-y-20">
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-12">
         
         {/* FUTURE VALUE SECTION */}
         <section>
@@ -621,12 +645,19 @@ export default function App() {
           body { background-color: white !important; -webkit-print-color-adjust: exact; }
           main { padding-top: 0 !important; }
           .max-w-5xl { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-          section { page-break-inside: avoid; margin-bottom: 2rem !important; }
+          section { page-break-inside: avoid; margin-bottom: 1rem !important; }
           header { border-bottom: none !important; padding-top: 0 !important; }
           .bg-slate-50 { background-color: white !important; }
           .shadow-sm, .shadow-md, .shadow-lg, .shadow-2xl { shadow: none !important; box-shadow: none !important; }
           @page { size: auto; margin: 15mm 15mm 15mm 15mm; }
         }
+
+        /* Styles for PDF output */
+        section { margin-bottom: 1.2rem !important; }
+        .bg-gradient-to-br { -webkit-print-color-adjust: exact !important; }
+        p { margin-bottom: 0.8rem !important; }
+        ul, ol { margin-bottom: 0.8rem !important; }
+        li { margin-bottom: 0.4rem !important; }
       `}} />
     </div>
   );
