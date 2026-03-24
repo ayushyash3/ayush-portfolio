@@ -592,6 +592,8 @@ export default function App() {
           </section>
         </div>
 
+      </main>
+
       </div>
 
       <footer className="bg-slate-900 text-slate-400 py-12 text-center mt-12 print:hidden">
