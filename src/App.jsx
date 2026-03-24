@@ -360,42 +360,48 @@ export default function App() {
 
   const handleDownload = () => {
     setExpandAllSections(true);
+    // Increased timeout to ensure all sections fully render before PDF generation
     setTimeout(() => {
       const element = contentRef.current;
 
-      // Add temporary inline styles for better PDF output
+      // Ensure all content is visible for PDF
       element.style.backgroundColor = 'white';
-      element.style.padding = '20px';
+      element.style.padding = '0px';
+      element.style.width = '100%';
 
       const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [8, 8, 8, 8],
         filename: 'Ayush_Maheshwari_Resume.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'png', quality: 1 },
         html2canvas: {
-          scale: 3,
+          scale: 2,
           logging: false,
           useCORS: true,
-          allowTaint: true
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          windowHeight: element.scrollHeight,
+          windowWidth: element.scrollWidth
         },
         jsPDF: {
           orientation: 'portrait',
           unit: 'mm',
           format: 'a4',
-          compress: true
+          compress: false
         }
       };
 
       html2pdf()
         .set(opt)
         .from(element)
-        .then(() => {
+        .then(function() {
           setExpandAllSections(false);
           // Remove inline styles
           element.style.backgroundColor = '';
           element.style.padding = '';
+          element.style.width = '';
         })
         .save();
-    }, 1000);
+    }, 1500);
   };
 
   return (
@@ -658,6 +664,10 @@ export default function App() {
         p { margin-bottom: 0.8rem !important; }
         ul, ol { margin-bottom: 0.8rem !important; }
         li { margin-bottom: 0.4rem !important; }
+
+        /* Ensure expanded sections are not clipped */
+        div[class*="relative"] { overflow: visible !important; }
+        div { page-break-inside: avoid; }
       `}} />
     </div>
   );
